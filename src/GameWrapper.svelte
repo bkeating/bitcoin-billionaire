@@ -1,15 +1,15 @@
 <script>
   import { onMount } from 'svelte';
-  import { currentScreen } from './store';
+  import { currentQuestion, currentScreen, totalQuestions } from './store';
 
   import data from '../mockups/data.json';
 
-  // TODO: Get the total amount of questions.
+  let questions;
 
-  onMount(async () => {
-    await console.log('mounted!');
-    console.log('data @@@@@@@@@@', data);
-    // console.log('JSON.parse(data).length @@@@@@@@@@', JSON.parse(data).length);
+  onMount(() => {
+    questions = data;
+    currentQuestion.set(data[0]);
+    totalQuestions.set(data.length);
   });
 
   import QuestionScreen from './screens/QuestionScreen.svelte';
@@ -25,10 +25,13 @@
   {#if $currentScreen === 0}
     <WelcomeScreen />
   {/if}
-  {#if $currentScreen === 1}
 
-    <QuestionScreen />
+  {#if $currentScreen === 1}
+    {#each questions as q}
+        <QuestionScreen  question={q} />
+    {/each}
   {/if}
+
   {#if $currentScreen === 2}
     <ResultsScreen />
   {/if}

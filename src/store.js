@@ -9,3 +9,4 @@ export const lifelineAudienceEnabled = writable(true);
 
 export const totalScore = writable(10000);
 export const currentQuestion = writable({});
+export const totalQuestions = writable(0);
