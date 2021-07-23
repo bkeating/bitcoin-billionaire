@@ -1,0 +1,61 @@
+[{
+    "question": "What is an individual unit of a blockchain?",
+    "correct_answer": "Block",
+    "incorrect_answers": [
+        "Bitcoin", "Satoshi","BIP"
+    ]
+},{
+    "question": "The process by which transactions are verified and added to a blockchain is known as:",
+    "correct_answer": "Mining",
+    "incorrect_answers": [
+        "Smart Contracts", "Batching","Cryptography"
+    ]
+},{
+    "question": "A type of digital currency, without a central bank or single administrator, that can be sent from user to user without the need for intermediaries.",
+    "correct_answer": "Bitcoin",
+    "incorrect_answers": [
+        "Shitcoin", "Blockchain","Node"
+    ]
+},{
+    "question": "A measurement of the processing power of the Bitcoin network is called:",
+    "correct_answer": "Hash Rate",
+    "incorrect_answers": [
+        "Block Chain", "Satoshi","Margin Trading"
+    ]
+},{
+    "question": "The Bitcoin algorithm is programmed to self-adjust every 2,016 blocks. This process is known as:",
+    "correct_answer": "Difficulty Adjustment",
+    "incorrect_answers": [
+        "Halving Cycle", "Digital Signature","Mining"
+    ]
+},{
+    "question": "The pseudonymous creator of Bitcoin whose real-world identity remains unknown.",
+    "correct_answer": "Satoshi Nakamoto",
+    "incorrect_answers": [
+        "Satoshi Bitnato", "Pas Meekhunsut","Ruja Ignatova"
+    ]
+},{
+    "question": "Also known as a SAT, this is one hundred-millionth of a bitcoin, or the smallest unit of the currency that can possibly be sent on the blockchain.",
+    "correct_answer": "Satoshi",
+    "incorrect_answers": [
+        "Dogecoin", "Seed","Shitcoin"
+    ]
+},{
+    "question": "When the reward for mining bitcoin transactions is cut in half.",
+    "correct_answer": "Halving",
+    "incorrect_answers": [
+        "Hard Fork", "Hashing", "Halfsies"
+    ]
+},{
+    "question": "A digital record of transactions where the name comes from its structure, in which individual records are linked together in single list.",
+    "correct_answer": "Block Chain",
+    "incorrect_answers": [
+        "Bit Chain", "Block Coin", "Block Head"
+    ]
+},{
+    "question": "Block size in bitcoin refers to the size of a block of code representing a recent chain of bitcoin transactions. A block contains more than 500 transactions on average. How large is a Block size?",
+    "correct_answer": "1 Megabyte",
+    "incorrect_answers": [
+        "1 Gigabyte", "1 Terrabyte", "1 BitByte"
+    ]
+}]
