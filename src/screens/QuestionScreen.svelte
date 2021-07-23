@@ -51,9 +51,10 @@
       </ul>
     </div>
     <div class="footer">
-      <div class="score" on:click={handleShowResults}>
+      <div class="score">
         {$totalScore} sats
         <input type="range" bind:value={$totalScore} />
+        <button on:click={handleShowResults}>Show Results</button>
       </div>
 
       <div class="lifelines is-visible">

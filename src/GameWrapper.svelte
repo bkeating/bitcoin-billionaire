@@ -11,31 +11,29 @@
   onMount(() => {
     currentQuestion.set(data[0]);
     totalQuestions.set(data.length);
+
+    console.log(data);
   });
 
   const handleNextQuestion = () => {
-    const curr = $currentQuestion.id;
-    console.log('curr @@@@@@@@@@', curr);
-    currentQuestion.set(data[curr + 1])
-  }
+    currentQuestion.set(data[$currentQuestion.id + 1]);
+  };
 
   // import Examples from './Examples.svelte';
 </script>
 
-<div class="bg-gray-`00 max-w-7xl mx-auto p-12">
-  <!-- <Examples /> -->
+<!-- <Examples /> -->
 
-  {#if $currentScreen === 0}
-    <WelcomeScreen />
-  {/if}
+{#if $currentScreen === 0}
+  <WelcomeScreen />
+{/if}
 
-  {#if $currentScreen === 1}
-    {#each data as q}
-      <QuestionScreen question={q} handleNextQuestion={handleNextQuestion} />
-    {/each}
-  {/if}
+{#if $currentScreen === 1}
+  {#each data as q}
+    <QuestionScreen question={q} {handleNextQuestion} />
+  {/each}
+{/if}
 
-  {#if $currentScreen === 2}
-    <ResultsScreen />
-  {/if}
-</div>
+{#if $currentScreen === 2}
+  <ResultsScreen />
+{/if}
