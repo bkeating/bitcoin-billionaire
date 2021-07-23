@@ -1,28 +1,23 @@
 <script>
-  import ExampleTextInput from './ExampleTextInput.svelte';
-  import ExampleIteration from './ExampleIteration.svelte';
-  import ExampleGlobalState from './ExampleGlobalState.svelte';
-  import ExampleScreenSteps from './ExampleScreenSteps.svelte';
+  import { currentScreen } from './store';
 
-  import { fly } from 'svelte/transition';
-  import Countdown from './Countdown.svelte';
-  let done = false;
+  import QuestionScreen from './screens/QuestionScreen.svelte';
+  import ResultsScreen from './screens/ResultsScreen.svelte';
+  import WelcomeScreen from './screens/WelcomeScreen.svelte';
+
+  import Examples from './Examples.svelte';
 </script>
 
 <div class="bg-gray-`00 max-w-7xl mx-auto p-12">
-  <ExampleGlobalState />
-  <ExampleTextInput />
-  <ExampleIteration />
-  <ExampleScreenSteps />
+  <!-- <Examples /> -->
 
-  <div class="p-6 my-6 bg-purple-100 border rounded-lg">
-    <h2 class="mb-6 text-2xl">Countdown Component</h2>
-    <div class="inner">
-      <Countdown countdown={5} on:completed={() => (done = true)} />
-
-      {#if done}
-        <h2 in:fly>STOP</h2>
-      {/if}
-    </div>
-  </div>
+  {#if $currentScreen === 0}
+    <WelcomeScreen />
+  {/if}
+  {#if $currentScreen === 1}
+    <QuestionScreen />
+  {/if}
+  {#if $currentScreen === 2}
+    <ResultsScreen />
+  {/if}
 </div>
