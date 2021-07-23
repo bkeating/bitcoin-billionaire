@@ -140,3 +140,29 @@
 .footer .actions.is-visible {
     display: block;
 }
+
+.start-button {
+    padding: 15px 45px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #ffb81c;
+    background-color: #180872;
+    border: 3px solid #fff;
+    border-radius: 15px;
+    box-shadow: #fff;
+}
+.start-button:hover {
+    background-color: #ffb81c;
+    color: #180872;
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
