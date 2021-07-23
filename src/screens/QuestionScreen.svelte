@@ -72,7 +72,7 @@
           <button class="is-error">Three</button>
         </li>
         <li class="answer">
-          <button class="is-success" on:click={() => totalScore.update(s => s + 100)}>Four</button>
+          <button class="is-success" on:click={() => totalScore.update(s => s + question.points)}>Four</button>
         </li>
       </ul>
     </div>
