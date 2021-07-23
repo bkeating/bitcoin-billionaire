@@ -21,6 +21,31 @@
 
 
 /* question-screen */
+.progress {
+    position: absolute;
+    left: 0px;
+    bottom: 100px;
+    list-style: none;
+    font-size: 20px;
+    text-align: left;
+    padding: 0px 20px;
+    margin: 0px;
+}
+
+.progress li {
+    padding: 5px 0px;
+    margin: 0px;
+    color: #6699ee;
+}
+
+.progress li.is-past {
+    color: #ffffff;
+}
+
+.progress li.is-active {
+    color: #ffb81c;
+}
+
 .content {
     transform: translate(-50%, -50%);
     position: absolute;
