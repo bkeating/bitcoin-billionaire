@@ -1,8 +1,8 @@
 <script>
-	import GameWraper from './GameWrapper.svelte';
+	import GameWrapper from './GameWrapper.svelte';
 </script>
 
-<GameWraper />
+<GameWrapper />
 
 <style global>
   @tailwind base;
