@@ -121,15 +121,16 @@
     align-items: center;
 }
 
-.footer .lifelines a {
+.footer .lifelines a, .footer .lifelines button {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 75px;
     margin-left: 20px;
+    border: 0;
 }
 
-.footer .lifelines a img {
+.footer .lifelines a, .footer .lifelines button img {
     height: 100%;
 }
 

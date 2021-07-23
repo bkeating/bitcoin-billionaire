@@ -1,8 +1,15 @@
 <script>
-  import { currentScreen, totalScore } from '../store';
+  import { currentScreen, totalScore, lifeline5050Enabled, lifelinePhoneEnabled, lifelineAudienceEnabled } from '../store';
 
   const handleShowResults = () => {
     currentScreen.set(2);
+  }
+
+  const handleUseLifeLine = (slug) => {
+      console.log('asdfds')
+    if (slug === '5050') { lifeline5050Enabled.set(false);}
+    if (slug === 'audience') { lifelineAudienceEnabled.set(false);}
+    if (slug === 'phone') { lifelinePhoneEnabled.set(false);}
   }
 </script>
 
@@ -34,15 +41,15 @@
         </div>
         <!-- if nothing answered yet -->
         <div class="lifelines is-visible">
-            <a href="#">
+            <button on:click={() => handleUseLifeLine('phone')} disabled={!$lifelinePhoneEnabled} class={!$lifelinePhoneEnabled && 'opacity-50 cursor'}>
                 <img src="./images/phone-a-friend.png" />
-            </a>
-            <a href="#">
+            </button>
+            <button on:click={() => handleUseLifeLine('5050')} disabled={!$lifeline5050Enabled} class={!$lifeline5050Enabled && 'opacity-50 cursor'}>
                 <img src="./images/50-50.png" />
-            </a>
-            <a href="#">
+            </button>
+            <button on:click={() => handleUseLifeLine('audience')} disabled={!$lifelineAudienceEnabled} class={$lifelineAudienceEnabled ? 'opacity-100' : 'opacity-50 cursor'}>
                 <img src="./images/audience.webp" />
-            </a>
+            </button>
         </div>
         <!-- Once an answer is submitted -->
         <div class="actions">
@@ -50,3 +57,10 @@
         </div>
     </div>
 </div>
+
+
+<style>
+    button:active {
+        background: none;
+    }
+</style>
