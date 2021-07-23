@@ -8,4 +8,8 @@
   @tailwind base;
   @tailwind components;
   @tailwind utilities;
+
+  body {
+    background: #001f49;
+  }
 </style>
