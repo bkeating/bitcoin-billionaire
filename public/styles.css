@@ -143,7 +143,7 @@
 }
 
 .start-button {
-    padding: 15px 45px;
+    padding: 12px 35px;
     font-size: 18px;
     text-align: center;
     cursor: pointer;
@@ -167,3 +167,24 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   }
+
+  .center-results{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.parent {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  .image1 {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+ .center-winner{
+     top: 25%;
+ }
