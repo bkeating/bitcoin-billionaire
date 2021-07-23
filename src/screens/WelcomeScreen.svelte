@@ -5,7 +5,7 @@
 <link href="/styles.css" rel="stylesheet" type="text/css" />
 <div class="screen" style="background-image: url('/images/Welcome.png');">
   <div class="center">
-    <h2 class="block text-4xl text-white">Total Questions: {$totalQuestions}</h2>
+    <h2 class="block mb-3 text-3xl text-white">Total Questions: {$totalQuestions}</h2>
     <button class="start-button " on:click={() => currentScreen.set(1)}>START</button>
 </div>
 </div>

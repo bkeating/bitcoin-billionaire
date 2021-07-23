@@ -1,5 +1,7 @@
 <script>
+  // The question payload comes in by way of a component prop.
   export let question;
+
   import {
     currentScreen,
     totalScore,
@@ -49,26 +51,26 @@
       {$totalScore} sats
       <input type="range" bind:value={$totalScore} />
     </div>
-    <!-- if nothing answered yet -->
+
     <div class="lifelines is-visible">
       <button
         on:click={() => handleUseLifeLine('phone')}
         disabled={!$lifelinePhoneEnabled}
-        class={!$lifelinePhoneEnabled && 'opacity-50 cursor'}
+        class="btn-lifeline {!$lifelinePhoneEnabled && 'opacity-50 cursor'}"
       >
         <img src="./images/phone-a-friend.png" />
       </button>
       <button
         on:click={() => handleUseLifeLine('5050')}
         disabled={!$lifeline5050Enabled}
-        class={!$lifeline5050Enabled && 'opacity-50 cursor'}
+        class="btn-lifeline {!$lifeline5050Enabled && 'opacity-50 cursor'}"
       >
         <img src="./images/50-50.png" />
       </button>
       <button
         on:click={() => handleUseLifeLine('audience')}
         disabled={!$lifelineAudienceEnabled}
-        class={$lifelineAudienceEnabled ? 'opacity-100' : 'opacity-50 cursor'}
+        class="btn-lifeline {$lifelineAudienceEnabled ? 'opacity-100' : 'opacity-50 cursor'}"
       >
         <img src="./images/audience.webp" />
       </button>
@@ -81,7 +83,10 @@
 </div>
 
 <style>
-  button:active {
-    background: none;
+  .btn-lifeline {
+    @apply border-none;
+  }
+  .btn-lifeline:active {
+    @apply bg-transparent zoom-hover;
   }
 </style>
