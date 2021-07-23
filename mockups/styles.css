@@ -1,3 +1,6 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
 
 /* app-wrapper */
 
@@ -18,37 +21,122 @@
 
 /* question-screen */
 .content {
-
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 1000px;
+    max-width: 100%;
 }
 
 .content .question {
-
+    text-align: center;
+    font-size: 18px;
+    color: white;
 }
 
 .content .answers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
+.content .answers .answer {
+    width: 50%;
+    list-style: none;
+    padding: 5px 10px;
+    margin: 0;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+}
+
+.content .answers .answer button {
+    width: 100%;
+    appearance: none;
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.content .answers button {
+    width: 50%;
+    padding: 15px 30px;
+    appearance: none;
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.content .answers button.is-success {
+    border-color: green;
+    color: green;
+}
+
+.content .answers button.is-error {
+    border-color: red;
+    color: red;
 }
 
 .footer {
-
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
 }
 
 .footer .score {
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    padding: 0px 20px;
+    font-size: 48px;
+    height: 75px;
 }
 
 .footer .lifelines {
-
+    display: none;
 }
 
 .footer .lifelines.is-visible {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
+.footer .lifelines a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75px;
+    margin-left: 20px;
+}
+
+.footer .lifelines a img {
+    height: 100%;
 }
 
 .footer .actions {
-
+    display: none;
 }
 
 .footer .actions.is-visible {
-
+    display: block;
 }
