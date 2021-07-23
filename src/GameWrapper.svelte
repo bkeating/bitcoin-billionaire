@@ -6,17 +6,21 @@
   import ResultsScreen from './screens/ResultsScreen.svelte';
   import WelcomeScreen from './screens/WelcomeScreen.svelte';
 
-  import data from '../mockups/data.json';
+  import questionList from '../mockups/data.json';
 
   onMount(() => {
-    currentQuestion.set(data[0]);
-    totalQuestions.set(data.length);
-
-    console.log(data);
+    currentQuestion.set(questionList[0]);
+    totalQuestions.set(questionList.length);
   });
 
-  const handleNextQuestion = () => {
-    currentQuestion.set(data[$currentQuestion.id + 1]);
+  const handleNextQuestion = (id) => {
+    if (id >= $totalQuestions) {
+      // Go to results screen
+      currentQuestion.set(questionList[0]);
+      currentScreen.set(2);
+    } else {
+      currentQuestion.set(questionList[id]);
+    }
   };
 
   // import Examples from './Examples.svelte';
@@ -29,7 +33,7 @@
 {/if}
 
 {#if $currentScreen === 1}
-  {#each data as q}
+  {#each questionList as q}
     <QuestionScreen question={q} {handleNextQuestion} />
   {/each}
 {/if}
