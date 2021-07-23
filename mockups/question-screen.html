@@ -9,7 +9,7 @@
                 <button>One</button>
             </li>
             <li class="answer">
-                <button class="is-disabled" disabled>Two</button>
+                <button disabled="disabled">Two</button>
             </li>
             <li class="answer">
                 <button class="is-error">Three</button>
@@ -23,20 +23,20 @@
         <div class="score">
             10,000 sats
         </div>
-        <!-- if nothing answered yet -->
-        <div class="lifelines is-visible">
+        <!-- if nothing answered yet add .is-visible-->
+        <div class="lifelines">
             <a href="#">
                 <img src="./images/phone-a-friend.png" />
             </a>
             <a href="#">
                 <img src="./images/50-50.png" />
             </a>
-            <a href="#">
+            <a href="#" class="is-used">
                 <img src="./images/audience.webp" />
             </a>
         </div>
-        <!-- Once an answer is submitted -->
-        <div class="actions">
+        <!-- Once an answer is submitted add .is-visible-->
+        <div class="actions is-visible">
             <button>Next</button>
         </div>
     </div>
