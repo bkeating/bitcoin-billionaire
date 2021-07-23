@@ -1,0 +1,2 @@
+<link href="/styles.css" rel="stylesheet" type="text/css" />
+<div class="screen"></div>

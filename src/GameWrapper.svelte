@@ -1,13 +1,23 @@
 <script>
-  import ExampleTextInput from './ExampleTextInput.svelte';
-  import ExampleIteration from './ExampleIteration.svelte';
-  import ExampleGlobalState from './ExampleGlobalState.svelte';
-  import ExampleScreenSteps from './ExampleScreenSteps.svelte';
+  import { currentScreen } from './store';
+
+  import QuestionScreen from './screens/QuestionScreen.svelte';
+  import ResultsScreen from './screens/ResultsScreen.svelte';
+  import WelcomeScreen from './screens/WelcomeScreen.svelte';
+
+  import Examples from './Examples.svelte';
 </script>
 
 <div class="bg-gray-`00 max-w-7xl mx-auto p-12">
-  <ExampleGlobalState />
-  <ExampleTextInput />
-  <ExampleIteration />
-  <ExampleScreenSteps />
+  <!-- <Examples /> -->
+
+  {#if $currentScreen === 0}
+    <WelcomeScreen />
+  {/if}
+  {#if $currentScreen === 1}
+    <QuestionScreen />
+  {/if}
+  {#if $currentScreen === 2}
+    <ResultsScreen />
+  {/if}
 </div>
