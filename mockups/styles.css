@@ -1,4 +1,54 @@
+
 /* app-wrapper */
 
+/* all screens */
+.screen {
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-image: url('./images/main_background.jpg');
+    background-size: cover;
+}
 
 /* welcome-screen */
+
+
+/* question-screen */
+.content {
+
+}
+
+.content .question {
+
+}
+
+.content .answers {
+
+}
+
+.footer {
+
+}
+
+.footer .score {
+
+}
+
+.footer .lifelines {
+
+}
+
+.footer .lifelines.is-visible {
+
+}
+
+.footer .actions {
+
+}
+
+.footer .actions.is-visible {
+
+}
