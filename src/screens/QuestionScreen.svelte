@@ -30,15 +30,15 @@
 
   // is-active
   $: sat1 = $totalScore > 1 ? 'is-past' : '';
-  $: sat2 = $totalScore > 100 ? 'is-past' : '';
-  $: sat3 = $totalScore > 1000 ? 'is-past' : '';
-  $: sat4 = $totalScore > 10000 ? 'is-past' : '';
-  $: sat5 = $totalScore > 100000 ? 'is-past' : '';
-  $: sat6 = $totalScore > 1000000 ? 'is-past' : '';
-  $: sat7 = $totalScore > 10000000 ? 'is-past' : '';
-  $: sat8 = $totalScore > 100000000 ? 'is-past' : '';
-  $: sat9 = $totalScore > 1000000000 ? 'is-past' : '';
-  $: sat10 = $totalScore > 10000000000 ? 'is-past' : '';
+  $: sat2 = $totalScore > 10 ? 'is-past' : '';
+  $: sat3 = $totalScore > 100 ? 'is-past' : '';
+  $: sat4 = $totalScore > 1000 ? 'is-past' : '';
+  $: sat5 = $totalScore > 10000 ? 'is-past' : '';
+  $: sat6 = $totalScore > 100000 ? 'is-past' : '';
+  $: sat7 = $totalScore > 1000000 ? 'is-past' : '';
+  $: sat8 = $totalScore > 10000000 ? 'is-past' : '';
+  $: sat9 = $totalScore > 100000000 ? 'is-past' : '';
+  $: sat10 = $totalScore > 100000000 ? 'is-past' : '';
 </script>
 
 <link href="/styles.css" rel="stylesheet" type="text/css" />
@@ -72,7 +72,7 @@
           <button class="is-error">Three</button>
         </li>
         <li class="answer">
-          <button class="is-success" on:click={() => handleNextQuestion(question.id)}>Four</button>
+          <button class="is-success" on:click={() => totalScore.update(s => s + 100)}>Four</button>
         </li>
       </ul>
     </div>
@@ -84,23 +84,23 @@
         </div>
       </div>
 
-      <div class="lifelines">
+      <div class="lifelines is-visible">
         <button
-          on:click={() => handleUseLifeLine('phone')}
+          on:click={() => lifelinePhoneEnabled.set(false)}
           disabled={!$lifelinePhoneEnabled}
           class="btn-lifeline {!$lifelinePhoneEnabled && 'opacity-50 cursor'}"
         >
           <img src="./images/phone-a-friend.png" />
         </button>
         <button
-          on:click={() => handleUseLifeLine('5050')}
+          on:click={() => lifeline5050Enabled.set(false)}
           disabled={!$lifeline5050Enabled}
           class="btn-lifeline {!$lifeline5050Enabled && 'opacity-50 cursor'}"
         >
           <img src="./images/50-50.png" />
         </button>
         <button
-          on:click={() => handleUseLifeLine('audience')}
+          on:click={() => lifelineAudienceEnabled.set(false)}
           disabled={!$lifelineAudienceEnabled}
           class="btn-lifeline {$lifelineAudienceEnabled ? 'opacity-100' : 'opacity-50 cursor'}"
         >
@@ -109,67 +109,10 @@
       </div>
 
       <div class="actions is-visible">
-        <button>Next</button>
+        <button on:click={() => handleNextQuestion(question.id)}>Next</button>
       </div>
     </div>
   </div>
-
-  <!--
-
-
-  <div class="screen">
-    <div class="content">
-      <div class="question">{question.id}: {question.question}</div>
-      <ul class="answers">
-        <li class="answer">
-          <button>One</button>
-        </li>
-        <li class="answer">
-          <button class="is-disabled" disabled>Two</button>
-        </li>
-        <li class="answer">
-          <button class="is-error">Three</button>
-        </li>
-        <li class="answer">
-          <button class="is-success">Four</button>
-        </li>
-      </ul>
-    </div>
-    <div class="footer">
-      <div class="score">
-        {$totalScore} sats
-      </div>
-
-      <div class="lifelines is-visible">
-        <button
-          on:click={() => handleUseLifeLine('phone')}
-          disabled={!$lifelinePhoneEnabled}
-          class="btn-lifeline {!$lifelinePhoneEnabled && 'opacity-50 cursor'}"
-        >
-          <img src="./images/phone-a-friend.png" />
-        </button>
-        <button
-          on:click={() => handleUseLifeLine('5050')}
-          disabled={!$lifeline5050Enabled}
-          class="btn-lifeline {!$lifeline5050Enabled && 'opacity-50 cursor'}"
-        >
-          <img src="./images/50-50.png" />
-        </button>
-        <button
-          on:click={() => handleUseLifeLine('audience')}
-          disabled={!$lifelineAudienceEnabled}
-          class="btn-lifeline {$lifelineAudienceEnabled ? 'opacity-100' : 'opacity-50 cursor'}"
-        >
-          <img src="./images/audience.webp" />
-        </button>
-      </div>
-
-
-      <div class="actions">
-        <button>Next</button>
-      </div>
-    </div>
-  </div> -->
 {/if}
 
 <style>
