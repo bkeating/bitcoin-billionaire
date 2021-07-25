@@ -88,6 +88,7 @@
     {:else if verdict === 'incorrect'}
       <div class="content incorrect-content">
         D'oh. Sorry, but you just missed out on {question.points} sats.
+        <p class="mt-10 text-base text-white">The correct answer was "{question.correct_answer}"</p>
         <div class="mt-12 actions is-visible">
           <button class="px-12 py-2 bg-red-900" on:click={() => handleNextQuestion(question.id)}>Next</button>
         </div>
