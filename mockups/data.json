@@ -78,4 +78,12 @@
     "incorrect_answers": [
         "1 Gigabyte", "1 Terrabyte", "1 BitByte"
     ]
+},{
+    "id": 11,
+    "points": 101010101001,
+    "question": "What is the best tool to make cool web apps?",
+    "correct_answer": "Svelte",
+    "incorrect_answers": [
+        "React", "Vue", "PHP"
+    ]
 }]

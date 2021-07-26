@@ -12,8 +12,6 @@
     left: 0px;
     right: 0px;
     bottom: 0px;
-    background-image: url('./images/main_background.jpg');
-    background-size: cover;
     font-family: helvetica;
 }
 
@@ -163,15 +161,15 @@
     justify-content: center;
     height: 75px;
     margin-left: 20px;
-    opacity: 0.9;
+    /* opacity: 0.9; */
 }
 
 .footer .lifelines a:hover. .footer .lifelines button:hover {
-    opacity: 1;
+    /* opacity: 1; */
 }
 
 .footer .lifelines a.is-used, .footer .lifelines button.is-used {
-    opacity: 0.5;
+    /* opacity: 0.5; */
     cursor: not-allowed;
 }
 

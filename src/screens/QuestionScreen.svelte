@@ -7,55 +7,51 @@
   let verdict;
 
   import {
-    currentScreen,
     totalScore,
     lifeline5050Enabled,
     lifelinePhoneEnabled,
     lifelineAudienceEnabled,
     currentQuestion,
+    currentScreen,
   } from '../store';
 
-  const handleShowResults = () => currentScreen.set(2);
+  $: lifelineOpts = [
+    { label: 'Phone a Friend', slug: 'phone', imageUrl: '/images/phone-a-friend.png', isEnabled: $lifelinePhoneEnabled },
+    { label: '50/50', slug: '50-50', imageUrl: '/images/50-50.png', isEnabled: $lifeline5050Enabled },
+    { label: 'Ask the Audience', slug: 'audience', imageUrl: '/images/audience.png', isEnabled: $lifelineAudienceEnabled },
+  ];
 
-  const handleUseLifeLine = (slug) => {
-    if (slug === '5050') {
-      lifeline5050Enabled.set(false);
-    }
-    if (slug === 'audience') {
-      lifelineAudienceEnabled.set(false);
-    }
-    if (slug === 'phone') {
-      lifelinePhoneEnabled.set(false);
-    }
-  };
+  const handleUseLineLine = (slug) => {
+    if (slug === 'phone') { lifelinePhoneEnabled.set(false)};
+    if (slug === '50-50') { lifeline5050Enabled.set(false)};
+    if (slug === 'audience') { lifelineAudienceEnabled.set(false)};
+  }
+
+  const numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   // is-active
-  $: sat1 = $totalScore > 1 ? 'is-past' : '';
-  $: sat2 = $totalScore > 10 ? 'is-past' : '';
-  $: sat3 = $totalScore > 100 ? 'is-past' : '';
-  $: sat4 = $totalScore > 1000 ? 'is-past' : '';
-  $: sat5 = $totalScore > 10000 ? 'is-past' : '';
-  $: sat6 = $totalScore > 100000 ? 'is-past' : '';
-  $: sat7 = $totalScore > 1000000 ? 'is-past' : '';
-  $: sat8 = $totalScore > 10000000 ? 'is-past' : '';
-  $: sat9 = $totalScore > 100000000 ? 'is-past' : '';
-  $: sat10 = $totalScore > 100000000 ? 'is-past' : '';
+  $: sat1 = $totalScore >= 1 ? 'is-past' : '';
+  $: sat2 = $totalScore >= 10 ? 'is-past' : '';
+  $: sat3 = $totalScore >= 100 ? 'is-past' : '';
+  $: sat4 = $totalScore >= 1000 ? 'is-past' : '';
+  $: sat5 = $totalScore >= 10000 ? 'is-past' : '';
+  $: sat6 = $totalScore >= 100000 ? 'is-past' : '';
+  $: sat7 = $totalScore >= 1000000 ? 'is-past' : '';
+  $: sat8 = $totalScore >= 10000000 ? 'is-past' : '';
+  $: sat9 = $totalScore >= 100000000 ? 'is-past' : '';
+  $: sat10 = $totalScore >= 100000000 ? 'is-past' : '';
 
   let answers = question.incorrect_answers;
   answers.push(question.correct_answer);
 
   let shuffledAnswers = answers.sort(() => 0.5 - Math.random());
 
-  // let buttonElList = document.querySelectorAll("input[type=button]");
-
   const handleSelectAnswer = (e, answer) => {
     e.preventDefault();
     if (answer === question.correct_answer) {
-      console.log('CORRECT!');
       totalScore.update(n => n + question.points);
       verdict = 'correct';
     } else {
-      console.log('incorrect');
       verdict = 'incorrect';
     }
   };
@@ -64,7 +60,8 @@
 <link href="/styles.css" rel="stylesheet" type="text/css" />
 
 {#if $currentQuestion.id === question.id}
-  <div class="screen">
+  <div class="">
+    <img src="/images/welcome.png" alt="" class="w-40 mt-6 ml-6" on:click={() => currentScreen.set(0)} />
     <ul class="progress">
       <li class="{sat10} transition-all">10 BTC</li>
       <li class="{sat9} transition-all">1 BTC</li>
@@ -80,9 +77,9 @@
 
     {#if verdict === 'correct'}
       <div class="content correct-content">
-        CORRECT! <br /> {question.points} sats for youuuu.
+        <span class="text-white shake text-7xl">CORRECT!</span> <br /> {question.points} sats for youuuu.
         <div class="mt-12 actions is-visible">
-          <button class="px-12 py-2 bg-blue-500" on:click={() => handleNextQuestion(question.id)}>Next</button>
+          <button class="px-12 py-2 bg-blue-900" on:click={() => handleNextQuestion(question.id)}>Next</button>
         </div>
       </div>
     {:else if verdict === 'incorrect'}
@@ -110,33 +107,20 @@
       <div class="footer">
         <div class="score">
           <div>
-            <input type="range" bind:value={$totalScore} max="10000000000" class="block w-full" />
-            <div class="block">{$totalScore} sats</div>
+            <input type="range" bind:value={$totalScore} max="10000" class="block" style="width: 300px;" />
+            <div class="block">{numberWithCommas($totalScore)} sats</div>
           </div>
         </div>
 
         <div class="lifelines is-visible">
-          <button
-            on:click={() => lifelinePhoneEnabled.set(false)}
-            disabled={!$lifelinePhoneEnabled}
-            class="btn-lifeline {!$lifelinePhoneEnabled && 'opacity-50 cursor'}"
-          >
-            <img src="./images/phone-a-friend.png" />
-          </button>
-          <button
-            on:click={() => lifeline5050Enabled.set(false)}
-            disabled={!$lifeline5050Enabled}
-            class="btn-lifeline {!$lifeline5050Enabled && 'opacity-50 cursor'}"
-          >
-            <img src="./images/50-50.png" />
-          </button>
-          <button
-            on:click={() => lifelineAudienceEnabled.set(false)}
-            disabled={!$lifelineAudienceEnabled}
-            class="btn-lifeline {$lifelineAudienceEnabled ? 'opacity-100' : 'opacity-50 cursor'}"
-          >
-            <img src="./images/audience.webp" />
-          </button>
+          {#each lifelineOpts as {label, slug, imageUrl, isEnabled}}
+            <button
+              on:click={() => handleUseLineLine(slug)}
+              class="btn-lifeline {!isEnabled ? 'opacity-50' : 'opacity-100'}"
+            >
+              <img src={imageUrl} alt={label} />
+            </button>
+          {/each}
         </div>
       </div>
     {/if}
@@ -156,4 +140,24 @@
   .incorrect-content {
     @apply text-4xl text-center text-red-500;
   }
+  @-webkit-keyframes spaceboots {
+	0% { -webkit-transform: translate(2px, 1px) rotate(0deg); }
+	10% { -webkit-transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { -webkit-transform: translate(-3px, 0px) rotate(1deg); }
+	30% { -webkit-transform: translate(0px, 2px) rotate(0deg); }
+	40% { -webkit-transform: translate(1px, -1px) rotate(1deg); }
+	50% { -webkit-transform: translate(-1px, 2px) rotate(-1deg); }
+	60% { -webkit-transform: translate(-3px, 1px) rotate(0deg); }
+	70% { -webkit-transform: translate(2px, 1px) rotate(-1deg); }
+	80% { -webkit-transform: translate(-1px, -1px) rotate(1deg); }
+	90% { -webkit-transform: translate(2px, 2px) rotate(0deg); }
+	100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); }
+}
+.shake {
+	-webkit-animation-name: spaceboots;
+	-webkit-animation-duration: 0.1s;
+	-webkit-transform-origin:50% 50%;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
 </style>
